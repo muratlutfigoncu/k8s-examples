@@ -1,6 +1,6 @@
-# Python Flask App + MongoDB on K8S.
+# Python Flask App + MongoDB on K8S (Minikube).
 
-Simple hello world python Flask application with MongoDB deployed on Kubernetes.
+Simple hello world python Flask application deployed on Kubernetes.
 This tutorial is tried on Minikube (Local Kubernetes) on Mac OSX.
 
 # Prerequesites
@@ -102,6 +102,13 @@ m.goncu$ minikube service python-flask-service
 🎉  Opening service default/python-flask-service in default browser...
 ```
 
+Now let's check out the output url:
+
+```bash
+m.goncu$ curl http://192.168.99.100:31466
+Hello from Python!
+```
+
 Kubernetes Documentation is great on the different service types, here's the appropriate page:
 https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
 
@@ -127,4 +134,12 @@ See the logs of the running pod:
 
 ```bash
 kubectl logs -f $pod_name$
+```
+
+# Appendix
+
+To be able to work with the docker daemon on your mac/linux host use the docker-env command in your shell:
+
+```
+eval $(minikube docker-env)
 ```
